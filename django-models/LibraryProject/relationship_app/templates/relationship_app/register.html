@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    {%load static%}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -11,6 +12,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Register</button>
+        
     </form>
+    
 </body>
 </html>
