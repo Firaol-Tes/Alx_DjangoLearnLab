@@ -17,7 +17,7 @@ from .serializers import BookSerializer
 # - Access restricted to authenticated users via IsAuthenticated permission.
 
 
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework
 
 class BookListView(generics.ListAPIView):
     """
@@ -41,10 +41,11 @@ class BookListView(generics.ListAPIView):
     permission_classes = [AllowAny]
 
     filter_backends = [
-        DjangoFilterBackend,
+        rest_framework.DjangoFilterBackend,
         filters.SearchFilter,
-        filters.OrderingFilter
+        filters.OrderingFilter,
     ]
+
     filterset_fields = ['title', 'author', 'publication_year']
     search_fields = ['title', 'author__name']
     ordering_fields = ['title', 'publication_year']
